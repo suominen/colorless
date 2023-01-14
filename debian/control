@@ -1,10 +1,10 @@
 Source: colorless
 Section: text
 Priority: extra
-Maintainer: Kimmo Suominen <kimmo@suoinen.com>
+Maintainer: Kimmo Suominen <kimmo@suominen.com>
 Build-Depends: debhelper (>= 7.0.50~)
 Standards-Version: 3.8.4
-Homepage: http://kimmo.suominen.com/sw/colorless
+Homepage: https://kimmo.suominen.com/sw/colorless
 Vcs-Git: https://github.com/suominen/colorless.git
 Vcs-Browser: https://github.com/suominen/colorless
 

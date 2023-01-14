@@ -9,7 +9,7 @@ BIN_SH=/bin/sh
 
 PROG=colorless
 MAN=1
-VERSION=104
+VERSION=106
 
 BINDIR=bin
 DBDIR=share/${PROG}
