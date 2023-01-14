@@ -1,5 +1,6 @@
 build-stamp
 colorless
+colorless-*.tar.gz
 debian/.debhelper
 debian/colorless.substvars
 debian/files
