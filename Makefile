@@ -9,11 +9,17 @@ BIN_SH=/bin/sh
 
 PROG=colorless
 MAN=1
-VERSION=106
+VERSION=107
 
 BINDIR=bin
 DBDIR=share/${PROG}
 MANDIR=share/man/man${MAN}
+
+RELEASE_ARTIFACTS= \
+	Makefile \
+	debian/changelog \
+
+RELEASE_TAG=v${VERSION}
 
 .PHONY: all
 all: ${PROG}
@@ -35,3 +41,25 @@ install: ${PROG} ${PROG}.man
 
 clean:
 	rm -f ${PROG}
+
+.PHONY: release-add add
+release-add add:
+	git add ${RELEASE_ARTIFACTS}
+
+.PHONY: release-diff
+release-diff diff:
+	git diff --staged
+
+.PHONY: release-commit commit
+release-commit commit:
+	git commit -m 'Release ${VERSION}'
+	git tag ${RELEASE_TAG}
+
+.PHONY: release-push push
+release-push push:
+	git push origin
+	git push origin tag ${RELEASE_TAG}
+
+release-archive tar.gz:
+	git archive -o ${PROG}-${VERSION}.tar.gz \
+	  --prefix=${PROG}-${VERSION}/ ${RELEASE_TAG}
