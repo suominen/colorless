@@ -1,0 +1,16 @@
+Source: colorless
+Section: text
+Priority: extra
+Maintainer: Kimmo Suominen <kimmo@suoinen.com>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+Homepage: http://kimmo.suominen.com/sw/colorless
+Vcs-Git: https://github.com/suominen/colorless.git
+Vcs-Browser: https://github.com/suominen/colorless
+
+Package: colorless
+Architecture: all
+Depends: ${misc:Depends}, dash | bash, coreutils, sed, less (>= 346)
+Description: Enable colorised command output and pipe it to less
+ colorless is a wrapper that enables colorised output of commands and
+ pipes the output to less(1).

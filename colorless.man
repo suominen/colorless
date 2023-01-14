@@ -1,0 +1,77 @@
+.\"
+.\" Copyright (c) 2023 Kimmo Suominen
+.\" All rights reserved.
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\"
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\"
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer
+.\"    in the documentation and/or other materials provided with the
+.\"    distribution.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+.\" "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+.\" LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+.\" A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+.\" HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+.\" SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+.\" LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+.\" DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+.\" THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+.\" (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+.\" OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+.\"
+.Dd January 14, 2023
+.Dt COLORLESS 1
+.Os
+.
+.Sh NAME
+.Nm colorless
+.Nd enable colorised command output and pipe it to less
+.
+.Sh SYNOPSIS
+.Nm
+.Op Fl m
+.Ar command
+.Op Ar args ...
+.Nm
+.Fl a
+.Op Fl cms
+.Nm
+.Fl h
+.
+.Sh DESCRIPTION
+.Nm
+is a wrapper that enables colorised output of commands and pipes
+the output to
+.Xr less 1 .
+.
+.Sh OPTIONS
+.Bl -tag -compact -width 6n
+.
+.It Fl a
+Output aliases for all known commands.
+.
+.It Fl c
+Use C shell syntax for alias commands.
+.
+.It Fl h
+Show usage ("help").
+.
+.It Fl m
+Do not enable colorised output ("monochrome").
+.
+.It Fl s
+Use Bourne shell syntax for alias commands.
+.
+.El
+.Sh SEE ALSO
+.Xr less 1
+.Sh AUTHOR
+.An -nosplit
+.An "Kimmo Suominen"
