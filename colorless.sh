@@ -130,8 +130,8 @@ esac
 
 if [ ${#} -lt 1 ]
 then
-  usage 1>&2
-  exit 1
+    usage 1>&2
+    exit 1
 fi
 
 cmd="${1}"
@@ -146,4 +146,11 @@ true)
     color="$(find_options "${cmd}")"
     ;;
 esac
-"${cmd}"${color:+ ${color}} "${@}" | less -+c -F -R
+exec 3>&1
+status=$(
+    (
+	( "${cmd}"${color:+ ${color}} "${@}"; echo $? >&4 ) \
+	| less -+c -F -R 1>&3
+    ) 4>&1
+)
+exit $status
