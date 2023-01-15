@@ -21,6 +21,9 @@ RELEASE_ARTIFACTS= \
 
 RELEASE_TAG=v${VERSION}
 
+TAR_GZ_PREFIX=${PROG}-${VERSION}
+TAR_GZ=${TAR_GZ_PREFIX}.tar.gz
+
 .PHONY: all
 all: ${PROG}
 
@@ -61,6 +64,15 @@ release-push push:
 	git push origin
 	git push origin tag ${RELEASE_TAG}
 
-release-archive tar.gz:
-	git archive -o ${PROG}-${VERSION}.tar.gz \
-	  --prefix=${PROG}-${VERSION}/ ${RELEASE_TAG}
+.PHONY: release-archive tar.gz
+release-archive tar.gz: ${TAR_GZ}
+
+${TAR_GZ}:
+	git archive -o ${TAR_GZ} --prefix=${TAR_GZ_PREFIX}/ ${RELEASE_TAG}
+
+.PHONY: release-checksum cheksum makesum
+release-checksum checksum makesum: ${TAR_GZ}
+	@openssl blake2s256 ${TAR_GZ}
+	@openssl rmd160 ${TAR_GZ}
+	@openssl sha256 ${TAR_GZ}
+	@openssl sha512 ${TAR_GZ}
