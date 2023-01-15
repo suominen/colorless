@@ -8,7 +8,7 @@ PREFIX=/usr/pkg
 
 PROG=colorless
 MAN=1
-VERSION=108
+VERSION=109
 
 BINDIR=bin
 DBDIR=share/${PROG}
