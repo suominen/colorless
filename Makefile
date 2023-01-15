@@ -4,8 +4,7 @@ DESTDIR=
 PREFIX=/usr/pkg
 
 # The Bourne shell used must understand shell functions.
-BIN_SH=/bin/sh
-#BIN_SH=/bin/sh5
+#SHELL=/bin/sh5
 
 PROG=colorless
 MAN=1
@@ -14,6 +13,7 @@ VERSION=108
 BINDIR=bin
 DBDIR=share/${PROG}
 MANDIR=share/man/man${MAN}
+TOOLPATH=${PREFIX}/${BINDIR}
 
 RELEASE_ARTIFACTS= \
 	Makefile \
@@ -26,8 +26,9 @@ all: ${PROG}
 
 ${PROG}: ${PROG}.sh Makefile
 	sed \
-	    -e 's;@BIN_SH@;${BIN_SH};g' \
 	    -e 's;@PREFIX@;${PREFIX};g' \
+	    -e 's;@SHELL@;${SHELL};g' \
+	    -e 's;@TOOLPATH@;${TOOLPATH};g' \
 	    -e 's;@VERSION@;${VERSION};g' \
 	    < $< > $@
 	chmod a+rx $@

@@ -1,4 +1,4 @@
-#!@BIN_SH@
+#!@SHELL@
 
 # Copyright (c) 2023 Kimmo Suominen
 # All rights reserved.
@@ -27,7 +27,11 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Use caller's PATH.
+# We will use the caller's PATH for running the provided command line.
+OPATH="${PATH}"
+
+PATH="@TOOLPATH@:/usr/bin:/bin"
+export PATH
 
 PROG="${0##*/}"
 
@@ -149,7 +153,12 @@ esac
 exec 3>&1
 status=$(
     (
-	( "${cmd}"${color:+ ${color}} "${@}"; echo $? >&4 ) \
+	(
+	    PATH="${OPATH}"
+	    export PATH
+	    "${cmd}"${color:+ ${color}} "${@}"
+	    echo $? >&4
+	) \
 	| less -+c -F -R 1>&3
     ) 4>&1
 )
